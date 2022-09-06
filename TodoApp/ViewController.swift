@@ -14,13 +14,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var todoArray = [String]()
     var detailArray = [String]()
+    var todo = String()
+    var detail = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         todoTable.dataSource = self
         todoTable.delegate = self
-//        todoArray.append(todoData)
         todoArray.append(todo)
         detailArray.append(detail)
     }

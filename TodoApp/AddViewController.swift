@@ -75,8 +75,8 @@ class AddViewController: UIViewController , UITextFieldDelegate {
             
             let preNC = self.navigationController!
             let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! ViewController
-            preVC.todoArray = self.todo
-            preVC.detailArray = self.detail
+            preVC.todo = self.todo
+            preVC.detail = self.detail
         }
     }
 
