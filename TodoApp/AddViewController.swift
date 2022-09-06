@@ -16,9 +16,6 @@ class AddViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet var detailTextField: UITextField!
     @IBOutlet var datePickerView: UIDatePicker!
     
-    
-    var todoDataArray = [String]()
-    var detailArray = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +25,7 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         
         todoTextField.delegate = self
         detailTextField.delegate = self
-        
-        let todoData = realm.objects(Memo.self)
-//        datePickerView.date = memo?.date
+
         // Do any additional setup after loading the view.
     }
     
@@ -46,8 +41,8 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         
         if memo != nil {
             try! realm.write {
-                todoDataArray.append("\(todo)")
-                detailArray.append("\(detail)")
+                memo!.todo = todo
+                memo!.detail = detail
             }
         } else{
             let newMemo = Memo()
@@ -65,8 +60,6 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         )
         
         present(alert, animated: true, completion: nil)
-        print("\(todoDataArray)")
-        print("\(detailArray)")
         
     }
     
@@ -82,7 +75,8 @@ class AddViewController: UIViewController , UITextFieldDelegate {
             
             let preNC = self.navigationController!
             let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! ViewController
-            preVC.todoArray = self.todoDataArray
+            preVC.todoArray = self.todo
+            preVC.detailArray = self.detail
         }
     }
 

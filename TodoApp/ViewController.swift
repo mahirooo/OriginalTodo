@@ -13,16 +13,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var todoTable: UITableView!
     
     var todoArray = [String]()
+    var detailArray = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         todoTable.dataSource = self
         todoTable.delegate = self
-        print("ahahahha\(todoArray)")
-        
 //        todoArray.append(todoData)
-        todoArray.append(todoDataArray)
+        todoArray.append(todo)
+        detailArray.append(detail)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
