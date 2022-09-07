@@ -19,7 +19,6 @@ class AddViewController: UIViewController , UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realm = try! Realm()
 
         let memo: Memo? = read()
         
@@ -56,10 +55,16 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         let alert: UIAlertController = UIAlertController(title: "成功",message: "保存しました",preferredStyle: .alert)
         
         alert.addAction(
-            UIAlertAction(title: "OK", style: .default, handler: nil)
+            UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }
         )
         
         present(alert, animated: true, completion: nil)
+        print(todo)
+        print(detail)
+        
+        
         
     }
     
@@ -67,18 +72,18 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "TodoSegue" {
+
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "TodoSegue" {
 //            let ViewController = segue.destination as? ViewController
 //            ViewController?.todoArray.append("\(memo?.todo)") = self.todoArray.append(\(memo?.todo))
-            
-            let preNC = self.navigationController!
-            let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! ViewController
-            preVC.todo = self.todo
-            preVC.detail = self.detail
-        }
-    }
+//
+//            let preNC = self.navigationController!
+//            let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! ViewController
+//            preVC.todo = self.todo
+//            preVC.detail = self.detail        }
+//    }
+}
 
     /*
     // MARK: - Navigation
@@ -90,5 +95,5 @@ class AddViewController: UIViewController , UITextFieldDelegate {
     }
     */
 
-}
+
 

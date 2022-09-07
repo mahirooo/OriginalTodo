@@ -12,18 +12,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet var todoTable: UITableView!
     
+    let realm = try! Realm()
+//    var todo: Results<Memo>!
+    
     var todoArray = [String]()
     var detailArray = [String]()
-    var todo = String()
-    var detail = String()
+//    var todo: Memo?
+//    var detail: Memo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         todoTable.dataSource = self
         todoTable.delegate = self
-        todoArray.append(todo)
-        detailArray.append(detail)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let realm = try! Realm()
+        let todoResults = realm.objects(Memo.self).first
+//        let detailResults = realm.objects(detail.self)
+        todoArray.append(<#String#>)
+//        detailArray.append(detail)
+        print(todoResults)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
