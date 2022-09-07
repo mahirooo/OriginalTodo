@@ -20,7 +20,7 @@ class AddViewController: UIViewController , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let memo: Memo? = read()
+//        let memo: Memo? = read()
         
         todoTextField.delegate = self
         detailTextField.delegate = self

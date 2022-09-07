@@ -13,38 +13,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var todoTable: UITableView!
     
     let realm = try! Realm()
-//    var todo: Results<Memo>!
-    
-    var todoArray = [String]()
-    var detailArray = [String]()
-//    var todo: Memo?
-//    var detail: Memo?
+
+    var todoList: Results<Memo>!
+    var detailList: Results<Memo>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         todoTable.dataSource = self
         todoTable.delegate = self
+        
+        self.todoList = realm.objects(Memo.self)
+        self.detailList = realm.objects(Memo.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let realm = try! Realm()
-        let todoResults = realm.objects(Memo.self).first
-//        let detailResults = realm.objects(detail.self)
-        todoArray.append(<#String#>)
-//        detailArray.append(detail)
-        print(todoResults)
+        let todoResults = realm.objects(Memo.self)
+        
+        todoTable.reloadData()
+        print(todoList.count)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return todoArray.count
-//        let todoData = realm.objects(Memo.self)
-        return todoArray.count
+        return todoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = todoArray[indexPath.row]
+        let memo: Memo = self.todoList[indexPath.row]
+        cell?.textLabel?.text = memo.todo
         return cell!
     }
     
