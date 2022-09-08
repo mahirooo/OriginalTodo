@@ -36,21 +36,12 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         let todo: String = todoTextField.text!
         let detail: String = detailTextField.text!
         
-        let memo: Memo? = read()
+        let newMemo = Memo()
+                newMemo.todo = todo
+                newMemo.detail = detail
         
-        if memo != nil {
-            try! realm.write {
-                memo!.todo = todo
-                memo!.detail = detail
-            }
-        } else{
-            let newMemo = Memo()
-            newMemo.todo = todo
-            newMemo.detail = detail
-            
-            try! realm.write {
-                realm.add(newMemo)
-            }
+        try! realm.write {
+                    realm.add(newMemo)
         }
         let alert: UIAlertController = UIAlertController(title: "成功",message: "保存しました",preferredStyle: .alert)
         
