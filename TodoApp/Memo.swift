@@ -11,5 +11,5 @@ import RealmSwift
 class Memo: Object {
     @objc dynamic var todo: String = ""
     @objc dynamic var detail: String = ""
-//    @objc dynamic var date: Int = ""
+    @objc dynamic var date: String = ""
 }

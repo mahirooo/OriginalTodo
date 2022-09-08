@@ -35,10 +35,12 @@ class AddViewController: UIViewController , UITextFieldDelegate {
     @IBAction func save(){
         let todo: String = todoTextField.text!
         let detail: String = detailTextField.text!
+        let date: String = datePickerView.date
         
         let newMemo = Memo()
                 newMemo.todo = todo
                 newMemo.detail = detail
+                newMemo.date = date
         
         try! realm.write {
                     realm.add(newMemo)
@@ -54,6 +56,7 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
         print(todo)
         print(detail)
+        print(date)
         
         
         
