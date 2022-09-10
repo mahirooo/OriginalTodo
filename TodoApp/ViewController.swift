@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     var todoList: Results<Memo>!
     var detailList: Results<Memo>!
+    var dateList: Results<Memo>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.todoList = realm.objects(Memo.self)
         self.detailList = realm.objects(Memo.self)
+        self.dateList = realm.objects(Memo.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,10 +42,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CellTableViewCell
         let memo: Memo = self.todoList[indexPath.row]
-        cell?.textLabel?.text = memo.todo
-        return cell!
+        cell.textLabel?.text = memo.todo
+        cell.datelabel?.text = memo.date
+        return cell
     }
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

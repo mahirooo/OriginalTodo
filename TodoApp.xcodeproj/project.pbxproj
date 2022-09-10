@@ -17,6 +17,7 @@
 		F691E26628C6248100A4D778 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691E26528C6248100A4D778 /* Memo.swift */; };
 		F691E26928C6253A00A4D778 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F691E26828C6253A00A4D778 /* Realm */; };
 		F691E26B28C6253A00A4D778 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F691E26A28C6253A00A4D778 /* RealmSwift */; };
+		F6D77A5D28CCED340007F6E0 /* CellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D77A5C28CCED340007F6E0 /* CellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F691E25D28C623AE00A4D778 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F691E26328C6247100A4D778 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F691E26528C6248100A4D778 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		F6D77A5C28CCED340007F6E0 /* CellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				F691E25828C623AE00A4D778 /* Assets.xcassets */,
 				F691E25A28C623AE00A4D778 /* LaunchScreen.storyboard */,
 				F691E25D28C623AE00A4D778 /* Info.plist */,
+				F6D77A5C28CCED340007F6E0 /* CellTableViewCell.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				F691E25428C623AD00A4D778 /* ViewController.swift in Sources */,
 				F691E25028C623AD00A4D778 /* AppDelegate.swift in Sources */,
 				F691E26428C6247100A4D778 /* AddViewController.swift in Sources */,
+				F6D77A5D28CCED340007F6E0 /* CellTableViewCell.swift in Sources */,
 				F691E25228C623AD00A4D778 /* SceneDelegate.swift in Sources */,
 				F691E26628C6248100A4D778 /* Memo.swift in Sources */,
 			);

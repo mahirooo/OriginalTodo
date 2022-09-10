@@ -14,7 +14,8 @@ class AddViewController: UIViewController , UITextFieldDelegate {
     
     @IBOutlet var todoTextField: UITextField!
     @IBOutlet var detailTextField: UITextField!
-    @IBOutlet var datePickerView: UIDatePicker!
+    @IBOutlet var dateTextField: UITextField!
+    var datePicker: UIDatePicker = UIDatePicker()
     
 
     override func viewDidLoad() {
@@ -24,6 +25,24 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         
         todoTextField.delegate = self
         detailTextField.delegate = self
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dateChange))
+        
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+        
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        
+        datePicker.datePickerMode = UIDatePicker.Mode.date
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.locale = Locale(identifier: "MDY")
+        dateTextField.inputView = datePicker
+        dateTextField.inputView = datePicker
+        
+        dateTextField.inputView = datePicker
+        dateTextField.inputAccessoryView = toolbar
 
         // Do any additional setup after loading the view.
     }
@@ -32,10 +51,17 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         return realm.objects(Memo.self).first
     }
     
+    @objc func dateChange() {
+        let formatter = DateFormatter()
+        dateTextField.endEditing(true)
+        formatter.dateFormat = "yyyy/M/d"
+        dateTextField.text = formatter.string(from: datePicker.date)
+    }
+    
     @IBAction func save(){
         let todo: String = todoTextField.text!
         let detail: String = detailTextField.text!
-        let date: String = datePickerView.date
+        let date: String = dateTextField.text!
         
         let newMemo = Memo()
                 newMemo.todo = todo
@@ -56,7 +82,6 @@ class AddViewController: UIViewController , UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
         print(todo)
         print(detail)
-        print(date)
         
         
         
